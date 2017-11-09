@@ -1,0 +1,22 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/springbootms:1.0
+    
+    working_directory: ~/my-app
+steps:
+      - checkout
+      - restore_cache:
+          key: springbootms-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: |
+          
+      - save_cache:
+          key: springbootms-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+      - run: xvfb-run -a node tests/run_e2e.js --glob=tests/build/**
