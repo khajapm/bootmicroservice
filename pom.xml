@@ -62,6 +62,7 @@
 				<version>1.0.0</version>
 				<configuration>
 					<mainClass>com.deloitte.demo.DockerserviceApplication</mainClass>
+					<dockerHost>http://127.0.0.1:2375</dockerHost>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main</dockerDirectory>
 					<resources>
