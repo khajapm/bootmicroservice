@@ -60,6 +60,7 @@ jobs:
       - run:
           name: Build and push the image to Docker Hub
           command: |
+            docker-machine restart
             sudo docker build -t springbootimage .
             sudo docker tag springbootimage khajapm/fullstackdemo-docker:springbootdev
             sudo docker login --username=${USER_NAME} --password=${USER_PASS}
