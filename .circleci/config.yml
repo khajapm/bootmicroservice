@@ -35,3 +35,17 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
+     # Build application
+      - run: mvn package
+      
+      #Store output of build
+      - store_artifacts:
+          path: target/testservice-0.0.1-SNAPSHOT.jar
+          
+      - run:
+          name: Build and push the image to Docker Hub
+          command: |
+            docker build -t springbootimage .
+            docker tag springbootimage khajapm/fullstackdemo-docker:springbootdev
+            docker login --username=${USER_NAME} --password=${USER_PASS}
+            docker push khajapm/fullstackdemo-docker
