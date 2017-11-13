@@ -23,6 +23,7 @@ jobs:
       MYSQL_USER: ubuntu
       MYSQL_PASSWORD: ubuntu
       MYSQL_ROOT_PASSWORD: ubuntu
+      MYSQL_RANDOM_ROOT_PASSWORD: ubuntu
       MYSQL_DATABASE: circle_test
     
     steps:
