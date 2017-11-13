@@ -60,6 +60,7 @@ jobs:
       - run:
           name: Build and push the image to Docker Hub
           command: |
+            usermod -aG docker ${USER_NAME}
             docker build -t springbootimage .
             docker tag springbootimage khajapm/fullstackdemo-docker:springbootdev
             docker login --username=${USER_NAME} --password=${USER_PASS}
