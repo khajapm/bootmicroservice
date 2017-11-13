@@ -15,6 +15,14 @@ jobs:
       # - image: circleci/postgres:9.4
  
     working_directory: ~/repo
+    
+    ## Customize database setup
+    database:
+      override:
+        - echo "CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY 'password'" | mysql -u root
+        - echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION" | mysql -u root
+        - echo "FLUSH PRIVILEGES" | mysql -u root
+        - echo "CREATE DATABASE IF NOT EXISTS circle_test" | mysql -u root
  
     environment:
       # Customize the JVM maximum heap limit
