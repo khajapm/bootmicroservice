@@ -45,7 +45,16 @@ jobs:
           - v1-dependencies-
  
       - run: mvn dependency:go-offline
- 
+      
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+              awscli==1.11.76
+              
       - save_cache:
           paths:
             - ~/.m2
