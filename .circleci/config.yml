@@ -1,7 +1,6 @@
-# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#	  
+
 version: 2
 jobs:
   build:
@@ -16,7 +15,9 @@ jobs:
     
     steps:
       - checkout
-
+ 
+    working_directory: ~/repo
+    
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -30,8 +31,14 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-        
-      # run tests!
+
+# run tests!
       - run: mvn integration-test
-	  
-     
+	   
+     # Build application
+      - run: mvn package
+      
+      #Store output of build
+      - store_artifacts:
+          path: target/springms-0.0.1-SNAPSHOT.jar
+          
