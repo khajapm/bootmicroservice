@@ -1,17 +1,16 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-
 version: 2
 jobs:
   build:
   working_directory: ~/spring-repo
-  
+
   docker:
       - image: openjdk:jdk-alpine
-          
+
     steps:
       - checkout
-     
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -30,8 +29,7 @@ jobs:
       - run: mvn integration-test
      # Build application
       - run: mvn package
-      
+
       #Store output of build
       - store_artifacts:
           path: target/springms-0.0.1-SNAPSHOT.jar
-          
