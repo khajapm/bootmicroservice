@@ -26,7 +26,7 @@ jobs:
           path: target/surefire-reports
       
       - store_artifacts:
-          path: target/springboot-0.0.1-SNAPSHOT.jar
+          path: target/springbootms-0.0.1-SNAPSHOT.jar
 
 workflows:
   version: 2
