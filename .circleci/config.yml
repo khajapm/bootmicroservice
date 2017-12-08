@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/circleci-spring
 
     docker:
-      - image: openjdk:jdk-alipne
+      - image: openjdk:jdk-alpine
 
     steps:
 
