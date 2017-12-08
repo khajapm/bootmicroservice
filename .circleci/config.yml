@@ -1,35 +1,30 @@
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
 version: 2
 jobs:
   build:
-  working_directory: ~/spring-repo
+    
+    working_directory: ~/circleci-spring
 
-  docker:
-      - image: openjdk:jdk-alpine
+    docker:
+      - image: openjdk:jdk-alipne
 
     steps:
+
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-          - pom-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - pom-dependencies-
-
-      - run: mvn package
-
+          key: circleci-spring-{{ checksum "pom.xml" }}
+      
+      - run: mvn dependency:go-offline
+      
       - save_cache:
           paths:
             - ~/.m2
-          key: pom-dependencies-{{ checksum "pom.xml" }}
-
-# run tests!
-      - run: mvn integration-test
-     # Build application
+          key: circleci-spring-{{ checksum "pom.xml" }}
+      
       - run: mvn package
-
-      #Store output of build
+      
+      - store_test_results:
+          path: target/surefire-reports
+      
       - store_artifacts:
-          path: target/springms-0.0.1-SNAPSHOT.jar
+          path: target/springboot-0.0.1-SNAPSHOT.jar
