@@ -43,9 +43,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+		</dependency>
+
+		<!--<dependency>-->
+		    <!--<groupId>mysql</groupId>-->
+		    <!--<artifactId>mysql-connector-java</artifactId>-->
+		<!--</dependency>-->
+		<!-- H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 		<!-- Enabling Boot App Health Check -->
 		<dependency>
@@ -61,7 +74,7 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
 				<configuration>
-					<mainClass>com.deloitte.demo.DockerserviceApplication</mainClass>
+					<mainClass>com.deloitte.demo.TestserviceApplication</mainClass>
 					<dockerHost>http://127.0.0.1:2375</dockerHost>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main</dockerDirectory>
