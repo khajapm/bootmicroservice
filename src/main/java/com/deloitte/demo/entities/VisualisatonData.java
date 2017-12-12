@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
+import lombok.Data;
 
 @Entity
-@Table(name="DUMMY")
+@Data
+@Table(name="Visualisaton_Data")
 public class VisualisatonData {
    	
 	@Id
