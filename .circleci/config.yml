@@ -1,18 +1,18 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circleci-spring
+    working_directory: /circleci-spring
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-	  - setup_remote_docker
-      #- run:
-       #   name: Install dependencies
-       #   command: |
-       #     mvn install \
-       #       docker-compose==1.12.0 \
-       #       awscli==1.11.76
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            mvn install \
+              docker-compose==1.12.0 \
+              awscli==1.11.76
       - restore_cache:
           key: springms-{{ checksum "pom.xml" }}
       - run: mvn dependency:go-offline
@@ -25,11 +25,10 @@ jobs:
           path: target/surefire-reports
       - store_artifacts:
           path: target/springbootms-0.0.1-SNAPSHOT.jar
-	  - run:
-		  name: build and push Docker image
+      - run:
+          name: build and push Docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker build -t khajapm/fullstackdemo-docker:$TAG .
-			docker login --username=${USER_NAME} --password=${USER_PASS}
-            #docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login --username=${USER_NAME} --password=${USER_PASS}
             docker push khajapm/fullstackdemo-docker:$TAG
