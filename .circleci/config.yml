@@ -25,7 +25,7 @@ jobs:
       - store_test_results:
           path: target/surefire-reports
       - store_artifacts:
-          path: target/springbootms-0.0.1-SNAPSHOT.jar
+          path: target/springbootms.jar
       - run:
           name: build and push Docker image
           command: |
