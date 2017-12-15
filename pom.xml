@@ -82,7 +82,7 @@
 					<resources>
 						<resource>
 							<directory>${project.build.directory}</directory>
-							<include>springbootms.jar</include>
+							<include>springbootms</include>
 						</resource>
 					</resources>
 				</configuration>
