@@ -57,6 +57,7 @@ public class PostApiService {
 
     public void deleteData(VisualisatonData viz){
         //VisualisatonData viz= getData(id);
-        chartRepo.delete(String.valueOf(viz.getId()));
+    	System.out.println("deleting - "+viz.getId());
+        chartRepo.delete(viz);
     }
 }
