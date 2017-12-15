@@ -9,6 +9,9 @@
 	<packaging>jar</packaging>
 
 	<name>springbootms</name>
+	<build>
+		<finalName>springbootms</finalName>
+	</build>
 	<description>Demo project for Dockerized  Spring Boot Microservice</description>
 
 	<parent>
