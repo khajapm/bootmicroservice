@@ -36,7 +36,7 @@ public class PostApiService {
         }catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println("added "+viz.getData());
+        System.out.println("added "+viz.getData_size());
     }
 
     public VisualisatonData getData(int id){
@@ -46,7 +46,7 @@ public class PostApiService {
         }catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println("added "+viz.getData());
+        System.out.println("added "+viz.getData_size());
         return viz;
     }
 

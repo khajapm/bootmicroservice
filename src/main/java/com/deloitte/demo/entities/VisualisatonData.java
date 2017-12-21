@@ -16,7 +16,7 @@ public class VisualisatonData {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	private long data;
+	private long data_size;
 	private String color;
 	
 //	public int getId() {
